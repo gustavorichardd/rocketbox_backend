@@ -14,20 +14,8 @@ class FileController {
 
         await box.save();
 
-        await req.io.sockets.in(box._id).emmit('file', file);
-        //
-        const get = async () => {
-            return Promise.reject('Oops!').catch(err => {
-              throw new Error(err);
-            });
-          };
-          
-          get()
-            .then(console.log)
-            .catch(function(e) {
-              console.log(e);
-            });
-        //
+        await req.io.sockets.in(box._id).emit('file', file);
+
         return res.json(file);
     }
 }
