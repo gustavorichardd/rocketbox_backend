@@ -14,7 +14,6 @@ io.on('connection', socket => {
     socket.on('connectRoom', box => {
         socket.join(box);
     })
-    //console.log('ok');
 })
 
 mongoose.connect("mongodb+srv://omnistack:omnistack@cluster0-ae9ei.mongodb.net/omnistack?retryWrites=true&w=majority", {
@@ -24,7 +23,7 @@ mongoose.connect("mongodb+srv://omnistack:omnistack@cluster0-ae9ei.mongodb.net/o
 
 app.use((req, res, next) => {
     req.io = io;
-
+ 
     return next();
 })
 
